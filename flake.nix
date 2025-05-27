@@ -53,6 +53,8 @@
           then writeShellScript "compile-chez-program" ''
             export PATH="${execPath}:''${PATH}"
             export LIBRARY_PATH="${libPath}:''${LIBRARY_PATH}"
+            export LDFLAGS="-liconv -lncurses"
+            export NIX_LDFLAGS="-liconv -lncurses"
             exec ${pre-chez-exe}/bin/compile-chez-program "$@"
           ''
           else writeShellScript "compile-chez-program" ''
